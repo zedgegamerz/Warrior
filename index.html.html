@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warrior by Umar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4a148c, #7b1fa2, #9c27b0);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 30px;
+    }
+
+    header h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3rem;
+      color: #f3e5f5;
+      letter-spacing: 4px;
+      text-shadow: 3px 3px 10px black;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #d1c4e9;
+    }
+
+    /* Slider Section */
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(5px);
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .slide img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+    }
+
+    .details {
+      margin-top: 20px;
+    }
+
+    .details h2 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2rem;
+      color: #f3e5f5;
+    }
+
+    .details p {
+      margin: 10px 0;
+      color: #e1bee7;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffd54f;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(90deg, #8e24aa, #d500f9);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #d500f9, #8e24aa);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Slider Controls */
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .control-btn {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+
+    .control-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      color: #d1c4e9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Warrior by Umar</h1>
+    <p>Unleash Your Strength • Walk Like a Warrior</p>
+  </header>
+
+  <section class="slider">
+    <div class="slides">
+      <!-- Shoe 1 -->
+      <div class="slide">
+        <img src="purple.jpg" alt="Shoe 1">
+        <div class="details">
+          <h2>Warrior Classic</h2>
+          <p>The timeless design for everyday strength.</p>
+          <div class="price">$99</div>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+      <!-- Shoe 2 -->
+      <div class="slide">
+        <img src="blue.jpg" alt="Shoe 2">
+        <div class="details">
+          <h2>Warrior Storm</h2>
+          <p>Bold style with unmatched comfort.</p>
+          <div class="price">$129</div>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+      <!-- Shoe 3 -->
+      <div class="slide">
+        <img src="red.jpg" alt="Shoe 3">
+        <div class="details">
+          <h2>Warrior Elite</h2>
+          <p>Premium design for the ultimate warriors.</p>
+          <div class="price">$159</div>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" onclick="prevSlide()">❮</button>
+      <button class="control-btn" onclick="nextSlide()">❯</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Warrior by Umar | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let index = 0;
+
+    function showSlide(i) {
+      if (i >= slideCount) index = 0;
+      else if (i < 0) index = slideCount - 1;
+      else index = i;
+
+      slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function nextSlide() {
+      showSlide(index + 1);
+    }
+
+    function prevSlide() {
+      showSlide(index - 1);
+    }
+  </script>
+
+</body>
+</html>
+
